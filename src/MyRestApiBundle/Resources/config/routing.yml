@@ -1,0 +1,3 @@
+my_rest_api_controller:
+    type:     rest
+    resource: MyRestApiBundle\Controller\RestController

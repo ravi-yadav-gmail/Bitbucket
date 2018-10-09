@@ -1,0 +1,29 @@
+AppBundle\Entity\Employee:
+    type: entity
+    table: employee
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        employeeName:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: employee_name
+        employeeSal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            options:
+                default: '0'
+            column: employee_sal
+    lifecycleCallbacks: {  }
