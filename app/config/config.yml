@@ -21,6 +21,8 @@ framework:
     form: ~
     csrf_protection: ~
     validation: { enable_annotations: true }
+    templating:
+        engines: ['twig']
     #serializer: { enable_annotations: true }
     default_locale: '%locale%'
     trusted_hosts: ~
@@ -78,3 +80,24 @@ fos_rest:
         default_format: json
     view:
         view_response_listener: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: UserBundle\Entity\User
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
+
+fos_oauth_server:
+    db_driver: orm
+    client_class: UserBundle\Entity\Client
+    access_token_class: UserBundle\Entity\AccessToken
+    refresh_token_class: UserBundle\Entity\RefreshToken
+    auth_code_class: UserBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
+        options:
+            access_token_lifetime: 86400
+            refresh_token_lifetime: 1209600
+            auth_code_lifetime: 30

@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new MyRestApiBundle\MyRestApiBundle(),
             new UserBundle\UserBundle(),
             new OAuthBundle\OAuthBundle(),
+			new FOS\UserBundle\FOSUserBundle(),
+			new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
