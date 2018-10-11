@@ -1,0 +1,170 @@
+Install FOSRestBundle.
+php56 -d memory_limit=-1 composer.phar require friendsofsymfony/rest-bundle
+
+php56 -d memory_limit=-1 composer.phar require jms/serializer-bundle
+
+php56 -d memory_limit=-1 composer.phar require --dev symfony/web-server-bundle
+
+new FOS\RestBundle\FOSRestBundle(),
+new JMS\SerializerBundle\JMSSerializerBundle()
+
+php56 bin/console generate:bundle --namespace=myrestapi/MySuperRestBundle --no-interaction
+
+php56 bin/console generate:controller --no-interaction --controller=myrestapi\MySuperRestBundle:Rest
+
+php56 bin/console generate:bundle --namespace=myrestapi/UserBundle --no-interaction
+
+php56 bin/console generate:bundle --namespace=myrestapi/OAuthBundle --no-interaction
+
+php56 -d memory_limit=-1 composer.phar require friendsofsymfony/user-bundle "~2.0"
+
+php56 -d memory_limit=-1 composer.phar require symfony/templating
+
+php56 bin/console doctrine:schema:update --force
+
+php56 -d memory_limit=-1 composer.phar require friendsofsymfony/oauth-server-bundle
+
+
+php56 bin/console doctrine:mapping:convert yml ./src/UserBundle/Resources/config/doctrine --from-database --filter="Client"
+
+doctrine:cache:clear-metadata
+php56 bin/console generate:doctrine:entity UserBundle:Client
+php56 bin/console generate:doctrine:entity UserBundle:AccessToken
+php56 bin/console generate:doctrine:entity UserBundle:RefreshToken
+php56 bin/console generate:doctrine:entity UserBundle:AuthCode
+
+php56 bin/console oauth:client:create --redirect-uri=https://develop.ckgs.us/ravinin/web/app_dev.php/api/get/restapi --grant-type=password --grant-type=refresh_token
+
+php56 bin/console fos:user:create ravi.yadav raviyadav.2110@cleverti.com password
+
+
+php56 bin/console doctrine:cache:clear-metadata
+
+php56 bin/console doctrine:generate:entity
+
+
+php56 bin/console doctrine:schema:update --force
+
+
+http GET https://develop.ckgs.us/ravinin/web/api/get/restapi
+
+http GET http://localhost:8000/app_dev.php/links
+
+
+php56 bin/console oauth:client:create --redirect-uri=http://www.cleverti.com --grant-type=password --grant-type=refresh_token
+
+php bin/console oauth:client:create --redirect-uri=http://www.cleverti.com --grant-type=password --grant-type=refresh_token
+
+
+php56 bin/console fos:user:create ricardo.correia ricardo.correia@cleverti.com password
+
+php56 bin/console oauth:client:create --redirect-uri=https://develop.ckgs.us/ravinin/web/app_dev.php/api/get/restapi --grant-type=password --grant-type=refresh_token
+
+public id = 2_4g7jxjg2uqskk4c4o0os8cgcswgcos0kogsgsw8w8s4oc04owc
+secret = 5yggx2nfln4s8ggkos0go4owo0080cgg8k0oo4c0wwgkg848g8
+
+php56 bin/console fos:user:create ravi.yadav raviyadav.2110@gmail.com password
+
+{
+    "grant_type": "password",
+    "client_id": "1_4654cpi0zu0wokk4g04gk0w444wkkwcs4sg0okoo0gks0gcokg",
+    "client_secret": "1h7xdjjo6ixwwow0w00oss4sgc0w8o48ocgw808w0gg4s40owc",
+    "username": "ricardo.correia",
+    "password": "password"
+}
+
+curl https://develop.ckgs.us/ravipassportprod/web/app_dev.php/oauth/v2/token \ -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" \ -d {"grant_type":"password","client_id":"4_54jk3ruksnsw804sw4408ggow0488g8c4kwsc8kskg0cwssggs","client_secret":"5zidkryv2p8og4kcsoccgw0gg08k08c88g48s8cswo04c0884w","username":"ricardo.correia","password":"$2y$13$dCjMDFruIhKEsqBZ.isDq.ItpPQnQxGhWOq4FOG1GFyQYQxW2tM0a" } \ -X POST
+
+curl https://{subdomain}.zendesk.com/oauth/tokens \
+  -H "Content-Type: application/json" \
+  -d '{"grant_type": "authorization_code", "code": "{your_code}",
+    "client_id": "{your_client_id}", "client_secret": "{your_client_secret}", 
+    "redirect_uri": "{your_redirect_url}", "scope": "read" }' \
+  -X POST
+  
+  
+/branches/oci/src/ckgs/vpov1Bundle/Controller/HomeController.php
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/Home/IndapplicationSearchResult.html.twig
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/ModifyVas/paymentWidgetTnT.html.twig
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/Home/shoppingCartWidget.html.twig
+
+/branches/oci/src/ckgs/serviceBundle/Entity/TrxOnlineVisaTemp.php
+/branches/oci/src/ckgs/serviceBundle/Resources/config/doctrine/TrxOnlineVisaTemp.orm.yml
+/branches/oci/src/ckgs/serviceBundle/Controller/VisaController.php
+/branches/oci/src/ckgs/serviceBundle/Controller/CommonPaymentController.php
+/branches/oci/src/ckgs/serviceBundle/Controller/StandAloneShippingController.php
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/orderformvpo.html.twig
+/branches/oci/src/ckgs/serviceBundle/Entity/RefundSqlClass.php
+/branches/oci/src/ckgs/serviceBundle/Entity/ServiceSqlClass.php
+/branches/oci/src/ckgs/serviceBundle/Resources/config/routing/visa.yml
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Visa/visaCalculator.html.twig
+/branches/oci/src/ckgs/serviceBundle/Resources/views/layout.html.twig
+
+/branches/oci/src/ckgs/communicationBundle/Controller/CKGSReplacementController.php
+
+MHG2300018
+DR. SRINIVAS JANGA
+VIDYA SHRIKANT YADAV
+
+PM no : 178332
+/branches/oci/src/ckgs/serviceBundle/Controller/CommonAddParticularFrmController.php - Done
+/branches/oci/src/ckgs/serviceBundle/Entity/ServiceSqlClass.php
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/additionalparticularform.html.twig - Done
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/outputadditionalfrm.html.twig - Done
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/printadditionalfrm.html.twig - Done
+/branches/oci/src/ckgs/vpov1Bundle/Controller/HomeController.php - Done
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/Home/editvisaadditionalparticularsform.html.twig - Done
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/Home/outputvisaadditionalfrm.html.twig - Done
+
+
+/branches/oci/src/ckgs/serviceBundle/Controller/CommonAddParticularFrmController.php
+/branches/oci/src/ckgs/vpov1Bundle/Controller/HomeController.php
+
+/branches/oci/src/ckgs/serviceBundle/Entity/ServiceSqlClass.php
+
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/additionalparticularform.html.twig
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/outputadditionalfrm.html.twig
+/branches/oci/src/ckgs/serviceBundle/Resources/views/Common/printadditionalfrm.html.twig
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/Home/editvisaadditionalparticularsform.html.twig
+/branches/oci/src/ckgs/vpov1Bundle/Resources/views/Home/outputvisaadditionalfrm.html.twig
+
+https://symfony.com/projects/phpdocumentor
+
+https://docs.phpdoc.org/
+
+http://nvie.com/posts/a-successful-git-branching-model/
+
+
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class: AppBundle\Entity\Client
+    access_token_class: AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class: AppBundle\Entitauthorization_codey\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
+If you get the following error 'Unable to find template "@JMSTranslation/translate/index.html.twig"' then traverse the path 'vendor\jms\translation-bundle\JMS\TranslationBundle\Resources\views' and run the command "ln -s Translate translate"
+
+http://develop.ckgs.us/ravinin/web/app_dev.php/oauth/v2/token?client_id=2_4g7jxjg2uqskk4c4o0os8cgcswgcos0kogsgsw8w8s4oc04owc&client_secret=5yggx2nfln4s8ggkos0go4owo0080cgg8k0oo4c0wwgkg848g8&grant_type=password&username=ravi.yadav&password=$2y$13$/LN1DXGDUOtQKrTG0i7wJuuapcbaCEcqavrkgFSWEG4lJ55c5mv/.
+
+
+
+curl http://develop.ckgs.us/ravinin/web/app_dev.php/oauth/v2/token \ -H "Content-Type: application/json & Accept: application/json" \ -d {"grant_type":"password","client_id":"2_4g7jxjg2uqskk4c4o0os8cgcswgcos0kogsgsw8w8s4oc04owc","client_secret":"5yggx2nfln4s8ggkos0go4owo0080cgg8k0oo4c0wwgkg848g8","username":"ravi.yadav","password":"$2y$13$/LN1DXGDUOtQKrTG0i7wJuuapcbaCEcqavrkgFSWEG4lJ55c5mv/."} \ -X POST
+
+curl https://develop.ckgs.us/ravinin/web/app_dev.php/api/getrestapi \ -H "Content-Type: application/json" \ -X GET
+
+
+curl https://develop.ckgs.us/ravinin/web/app_dev.php/oauth/v2/token \ -H "Content-Type: application/json" \ -d '{"grant_type": "authorization_code","client_id":"1_5" }' \ -X POST
+
+
+curl https://develop.ckgs.us/ravinin/web/oauth/v2/token \ -H "Content-Type: application/json" \ -d '{"grant_type": "password", "client_id": "1_5", "client_secret": "3wuj2jumcfswk0c4084cwgw0wwgkss44owk8os0sgw0gcwcoww", "scope": "read","username": "ravi.yadav", "password": "password"}' \ -X POST
+
+php56 bin/console oauth:client:create --redirect-uri=http://www.cleverti.com --grant-type=password --grant-type=refresh_token
+
+php56 bin/console fos:user:create ricardo.correia ricardo.correia@cleverti.com password
+
+curl -H "Authorization: Bearer YTg2MzY1NjVmMGI3MmEwZjk3ODU1ODYyOTU3NGVlM2E1ZDNhM2Q0NDIxZDc0MGE5NzY2ZmQzZTE4YTVjODBlOA" 	https://develop.ckgs.us/ravipassportprod/web/app_dev.php/api/get/cleverti
+
+
+curl 'https://develop.ckgs.us/ravipassportprod/web/app_dev.php/api/get/cleverti' -H 'Authorization: Bearer YTg2MzY1NjVmMGI3MmEwZjk3ODU1ODYyOTU3NGVlM2E1ZDNhM2Q0NDIxZDc0MGE5NzY2ZmQzZTE4YTVjODBlOA'
