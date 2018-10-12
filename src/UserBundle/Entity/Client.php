@@ -8,19 +8,21 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
 /**
- * Client
- *
- * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\ClientRepository")
+
+
+
+ * @ORM\Entity
  */
 class Client extends BaseClient
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
+
+
+
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
 
@@ -38,11 +40,6 @@ class Client extends BaseClient
         parent::__construct();
         // your own logic
     }
-    /**
-     * Get id
-     *
-     * @return int
-     */
     public function getId()
     {
         return $this->id;

@@ -18,12 +18,12 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
             new MyRestApiBundle\MyRestApiBundle(),
-            new UserBundle\UserBundle(),
-            new OAuthBundle\OAuthBundle(),
-			new FOS\UserBundle\FOSUserBundle(),
+			new JMS\SerializerBundle\JMSSerializerBundle(),
 			new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new OAuthBundle\OAuthBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+			new UserBundle\UserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

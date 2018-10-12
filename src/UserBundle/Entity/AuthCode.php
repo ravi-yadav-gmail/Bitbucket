@@ -6,18 +6,19 @@ use FOS\OAuthServerBundle\Entity\AuthCode as BaseAuthCode;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AuthCode
- *
- * @ORM\Table(name="auth_code")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\AuthCodeRepository")
+
+
+
+ * @ORM\Entity
  */
 class AuthCode extends BaseAuthCode
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
+
+
+
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -29,8 +30,8 @@ class AuthCode extends BaseAuthCode
     protected $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="authCode", fetch="EAGER", cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     protected $user;
 

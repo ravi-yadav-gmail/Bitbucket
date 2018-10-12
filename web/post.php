@@ -1,14 +1,15 @@
 <?php
 ini_set('display_errors',1);
 set_time_limit(0);
-if($_POST["grant_type"] != '') {
+if(isset($_POST["grant_type"]) && $_POST["grant_type"] != '') {
 	
-    $grant_type= 'password';
-	$client_id = '4_54jk3ruksnsw804sw4408ggow0488g8c4kwsc8kskg0cwssggs';
-	$client_secret = '5zidkryv2p8og4kcsoccgw0gg08k08c88g48s8cswo04c0884w';
-	$username = 'ricardo.correia';
+	/* This is for access token request */
+    /* $grant_type= 'password';
+	$client_id = '5_1557p1yenrpc0gs8k0kwkc44k0cswg8swwskgs84sg8cogw4so';
+	$client_secret = '1zzlirvkolk0g4g044k80o00okcookwk8w8s8kww844wkkco8s';
+	$username = 'ravi.yadav';
 	$password = 'password';
-	$url = 'https://develop.ckgs.us/ravipassportprod/web/app_dev.php/oauth/v2/token?';
+	$url = 'https://develop.ckgs.us/ravinin/web/app_dev.php/oauth/v2/token?';
 	$postdata = array(
 			'grant_type' => urlencode($grant_type),
 			'client_id' => urlencode($client_id),
@@ -20,12 +21,60 @@ if($_POST["grant_type"] != '') {
 	$jsondata = json_encode($postdata);
 	$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_POST,1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata); //$xml is the xml string
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: application/json"));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_NOPROGRESS, 0);
-
+		$result = curl_exec ($ch); */
+	/* This is for access token request */
+	
+	/* This is for access token request */
+    /* $grant_type= 'password';
+	$client_id = '5_1557p1yenrpc0gs8k0kwkc44k0cswg8swwskgs84sg8cogw4so';
+	$client_secret = '1zzlirvkolk0g4g044k80o00okcookwk8w8s8kww844wkkco8s';
+	$username = 'ravi.yadav';
+	$password = 'password';
+	$url = 'https://develop.ckgs.us/ravinin/web/app_dev.php/oauth/v2/token?';
+	$postdata = array(
+			'grant_type' => urlencode($grant_type),
+			'client_id' => urlencode($client_id),
+			'client_secret' => urlencode($client_secret),
+			'username' => urlencode($username),
+			'password' => urlencode($password)
+			
+		);
+	$jsondata = json_encode($postdata);
+	$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_POST,1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: application/json"));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_NOPROGRESS, 0);
+		$result = curl_exec ($ch); */
+	/* This is for access token request */
+	
+	/* This is for refresh token request */
+    $grant_type= 'refresh_token';
+	$client_id = '5_1557p1yenrpc0gs8k0kwkc44k0cswg8swwskgs84sg8cogw4so';
+	$client_secret = '1zzlirvkolk0g4g044k80o00okcookwk8w8s8kww844wkkco8s';
+	$refresh_token = 'MjQxM2E1OWYzZTc4NWI0OGVmYjZjM2FiMjlkYzE1OGM4NzdjYTJjNTMzYzg5MDg4NWQyNjliMzE2MzkwODRlMg';
+	$url = 'https://develop.ckgs.us/ravinin/web/app_dev.php/oauth/v2/token?';
+	$postdata = array(
+			'grant_type' => urlencode($grant_type),
+			'client_id' => urlencode($client_id),
+			'client_secret' => urlencode($client_secret),
+			'refresh_token' => urlencode($refresh_token)
+		);
+	$jsondata = json_encode($postdata);
+	$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_POST,1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: application/json"));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_NOPROGRESS, 0);
 		$result = curl_exec ($ch);
+		echo "<pre>";print_r($result);echo "<pre/>";exit;
+	/* This is for access token request */	
 }
 
 
