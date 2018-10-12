@@ -29,25 +29,51 @@ printDiagonalSums($a, 4);
 /*** An efficient PHP program to find sum of diagonals  ***/
 
 /*** repeated element out of the array of integers  ***/
-
-$array = [12, 46, 244, 0, 12, 83, 48, 98, 233, 83, 26, 91, 119, 148, 98];
+echo "<pre>";
+$array = [12, 46, 12, 0, 12, 83, 0, 12, 233, 83, 233, 12, 0, 148, 46];
 $array_help = array();
 # run over the array
 foreach ($array as $val) {
 
-    if (isset($array_help) && in_array($val,$array_help))
+    if (isset($array_help) && in_array($val,$array_help)){
      # found if is set already !
         echo '1<br/>';
 
-    else
+}else{
        # its the first time this value appear
        $array_help[] = $val;
 	   echo '0<br/>';
+	}
 }
+echo "</pre>";
 /*** repeated element out of the array of integers  ***/
-
-
-$str = '12jan%^%%^';
-$arr = preg_split('/(?<=[0-9])(?=[a-zA-Z]+)(?=[^a-zA-Z])/i',$str);                                                               
-print_r($arr);
+if (defined('STDIN')) {
+	$str = $argv[1];
+//$str = 'dfgdfYV6765^&*^%876hvgVUYtvytv';
+preg_match_all('/(\d)|(\w)|(.*?)/', $str, $matches);
+//print_r($matches);
+$numbers = implode($matches[1]);
+$letters = implode($matches[2]);
+$ss = implode($matches[3]);
+print_r($numbers);
+print_r($letters);
+print_r($ss);
+echo "<pre>";
+$numarr = $letterarr = $ssymbolarr = array();
+for ($i=0; $i<strlen($str); $i++) 
+{ 
+	if (is_numeric($str[$i])) 
+		$numarr[] = $str[$i]; 
+	else if(($str[$i] >= 'A' && $str[$i] <= 'Z') || 
+			($str[$i] >= 'a' && $str[$i] <= 'z')) 
+		$letterarr[] = $str[$i]; 
+	else
+		$ssymbolarr[] = $str[$i]; 
+}
+echo "<pre>";
+print_r($numarr);
+print_r($letterarr);
+print_r($ssymbolarr);
+}
+//var_dump($numbers, $letters,$ss);
 ?> 
