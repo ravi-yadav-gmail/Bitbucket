@@ -1,0 +1,150 @@
+1.	Session & Cookies
+2.	Design Pattern in PHP
+	- Factory
+	Many of the design patterns in the original Design Patterns book encourage loose coupling. To understand this concept, it's easiest to talk about a struggle that many developers go through in large systems. The problem occurs when you change one piece of code and watch as a cascade of breakage happens in other parts of the system -- parts you thought were completely unrelated.
+	- Singleton pattern
+	Some application resources are exclusive in that there is one and only one of this type of resource. For example, the connection to a database through the database handle is exclusive. You want to share the database handle in an application because it's an overhead to keep opening and closing connections, particularly during a single page fetch.The singleton pattern covers this need. An object is a singleton if the application can include one and only one of that object at a time. The code in Listing 3 shows a database connection singleton in PHP V5.
+	- Observer pattern
+	The observer pattern gives you another way to avoid tight coupling between components. This pattern is simple: One object makes itself observable by adding a method that allows another object, the observer, to register itself. When the observable object changes, it sends a message to the registered observers. What those observers do with that information isn't relevant or important to the observable object. The result is a way for objects to talk with each other without necessarily understanding why.
+	- Strategy
+	It is used to hide implementation details of algorithms needed to perform an operation. Having strategies, the client can choose needed algorithm without knowing actual implementation and apply it to perform the operation.
+
+3.	OOPS concept
+
+4.	Stateless Vs Statefull
+	HTTP is a stateless protocol. A stateless protocol does not require the server to retain information or status about each user for the duration of multiple requests.
+
+	But some web applications may have to track the user's progress from page to page, for example when a web server is required to customize the content of a web page for a user. Solutions for these cases include:
+
+	the use of HTTP cookies.
+	server side sessions,
+	hidden variables (when the current page contains a form), and
+	URL-rewriting using URI-encoded parameters, e.g., /index.php?session_id=some_unique_session_code.
+	What makes the protocol stateless is that the server is not required to track state over multiple requests, not that it cannot do so if it wants to. This simplifies the contract between client and server, and in many cases (for instance serving up static data over a CDN) minimizes the amount of data that needs to be transferred. If servers were required to maintain the state of clients' visits the structure of issuing and responding to requests would be more complex. As it is, the simplicity of the model is one of its greatest features.
+
+5.	echo & print
+	print only takes one parameter, while echo can have multiple parameters.
+	print returns a value (1), so can be used as an expression.
+	echo is slightly faster.
+
+6.	where vs having
+7.	jsonp
+8.	how to get cookie from javascript
+9.	include vs require
+10.	difference between abstract & interface
+11.	what is trait in php
+
+12.	window.load vs document.ready
+	document.ready executes when HTML-Document is loaded and DOM is ready
+	window.load executes when complete page is fully loaded, including all frames, objects and images
+
+13.	redis vs memcache
+14.	Load balancer
+15.	method overloading vs method overriding
+16.	What is DNS
+17.	What are namespaces in php?
+	Namespacing does for functions and classes what scope does for variables. It allows you to use the same function or class name in different parts of the same program without causing a name collision.
+
+	In simple terms, think of a namespace as a person's surname. If there are two people named "John" you can use their surnames to tell them apart.
+
+	The Scenario
+	Suppose you write an application that uses a function named output(). Your output() function takes all of the HTML code on your page and sends it to the user.
+
+	Later on your application gets bigger and you want to add new features. You add a library that allows you to generate RSS feeds. This library also uses a function named output() to output the final feed.
+
+	When you call output(), how does PHP know whether to use your output() function or the RSS library's output() function? It doesn't. Unless you're using namespaces.
+
+	Example
+	How do we solve having two output() functions? Simple. We stick each output() function in its own namespace.
+
+	That would look something like this:
+
+	namespace MyProject;
+
+	function output() {
+		# Output HTML page
+		echo 'HTML!';
+	}
+
+	namespace RSSLibrary;
+
+	function output(){
+		# Output RSS feed
+		echo 'RSS!';
+	}
+	Later when we want to use the different functions, we'd use:
+
+	\MyProject\output();
+	\RSSLibrary\output();
+	Or we can declare that we're in one of the namespaces and then we can just call that namespace's output():
+
+	namespace MyProject;
+
+	output(); # Output HTML page
+	\RSSLibrary\output();
+	No Namespaces?
+	If we didn't have namespaces we'd have to (potentially) change a lot of code any time we added a library, or come up with tedious prefixes to make our function names unique. With namespaces, we can avoid the headache of naming collisions when mixing third-party code with our own projects.
+18.	can a inner join will work without ON alias
+19. Will session work if cookies are disabled
+
+20.	How can we acheive overloading in php
+	<?php
+	class TDshape {
+	const Pi = 3.142 ;  // constant value
+	 function __call($fname, $argument){
+		if($name == 'area')
+			switch(count($argument)){
+				case 0 : return 0 ;
+				case 1 : return self::Pi * $argument[0] ; // 3.14 * 5
+				case 2 : return $argument[0] * $argument[1];  // 5 * 10
+			}
+
+		}
+
+	}
+	$circle = new TDshape();
+	echo "Area of circle:".$circle->area(5)."</br>"; // display the area of circle
+	 $rect = new TDshape();
+	echo "Area of rectangle:".$rect->area(5,10); // display area of rectangle
+	?>
+
+21.	Magic methods in PHP ? 
+	__construct
+	__destruct
+	__get
+	__set
+	__call
+	__sleep
+	__wakeup
+	__clone
+	__toString
+
+22.	what are the global variables in php?
+	$GLOBALS
+	$_SERVER
+	$_REQUEST
+	$_POST
+	$_GET
+	$_FILES
+	$_ENV
+	$_COOKIE
+	$_SESSION
+	
+23.	Synchronous vs asynchronous in php?
+	Synchronous – Script stops and waits for the server to send back a reply before continuing. There are some situations where Synchronous Ajax is mandatory.
+	In standard Web applications, the interaction between the customer and the server is synchronous. This means that one has to happen after the other. If a customer clicks a link, the request is sent to the server, which then sends the results back.
+	Because of the danger of a request getting lost and hanging the browser, synchronous javascript isn’t recommended for anything outside of (onbefore)unload event handlers, but if you need to hear back from the server before you can allow the user to navigate away from the page, synchronous Javascript isn’t just your best option.
+	Asynchronous – Where the script allows the page to continue to be processed and will handle the reply if and when it arrives. If anything goes wrong in the request and/or transfer of the file, your program still has the ability to recognize the problem and recover from it.
+	Processing asynchronously avoids the delay while the retrieval from the server is taking place because your visitor can continue to interact with the web page and the requested information will be processed with the response updating the page as and when it arrives.
+	
+24. What is the use of & – Pass by Reference
+	References allow two variables to refer to the same content. In other words, a variable points to its content (rather than becoming that content). Passing by reference allows two variables to point to the same content under different names. The ampersand ( & ) is placed before the variable to be referenced.
+	$a = 1;
+	$b = &$a; // $b references the same value as $a, currently 1
+	$b = $b + 1; // 1 is added to $b, which effects $a the same way
+	echo "b is equal to $b, and a is equal to $a";
+
+25. What will happen if we upload file which is greater than allowed upload max size in php?
+	By default, the maximum upload file size for PHP scripts is set to 128 megabytes. However, you may want to change these limits. For example, you can set a lower limit to prevent users from uploading large files to your site. To do this, change the upload_max_filesize and post_max_size directives in your php.ini file.
+	If the size of post data is greater than post_max_size, the $_POST and $_FILES superglobals are empty. This can be tracked in various ways, e.g. by passing the $_GET variable to the script processing the data, i.e. <form action="edit.php?processed=1">, and then checking if $_GET['processed'] is set.
+	So unfortunately, it doesn't look like PHP sends an error. And since it sends am empty $_POST array, that is why your script is going back to the blank form - it doesn't think it is a POST
