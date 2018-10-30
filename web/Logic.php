@@ -73,3 +73,24 @@ for($i=0; $i<=$lenght-1;$i++){
 //print_r($lenght);exit;
 }
 echo "<pre>";print_r($z);
+
+$arraydata = array(array('PQR','good','123'),array('PQR','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('XYZ','bad','456'),array('ABC','good','123'),array('XYZ','bad','456'));
+$jsonecode  = json_encode($arraydata);
+$jsondecode  = json_decode($jsonecode);
+$mytempvar = array();
+if(!empty($jsondecode)){
+	foreach($jsondecode as $eachjsondecode){
+		$mytempvar[] = json_encode($eachjsondecode);
+		
+	}
+	$myVararr = array();
+	for($i=0;$i<count($mytempvar); $i++){
+		$key = $mytempvar[$i];
+		if(isset($myVararr[$key]) && $myVararr[$key]>=1 ){
+			$myVararr[$key]++;
+		}else{
+            $myVararr[$key]=1;
+		}
+	}
+}
+echo "<pre>";print_r($myVararr);exit;
