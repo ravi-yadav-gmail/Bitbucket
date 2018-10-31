@@ -74,6 +74,25 @@ for($i=0; $i<=$lenght-1;$i++){
 }
 echo "<pre>";print_r($z);
 
+/* Input=> array(
+	array('PQR','good','123'),
+	array('PQR','good','123'),
+	array('ABC','good','123'),
+	array('ABC','good','123'),
+	array('ABC','good','123'),
+	array('ABC','good','123'),
+	array('ABC','good','123'),
+	array('ABC','good','123'),
+	array('XYZ','bad','456'),
+	array('ABC','good','123'),
+	array('XYZ','bad','456')
+	)
+Output=> Array
+(
+    [["PQR","good","123"]] => 2
+    [["ABC","good","123"]] => 7
+    [["XYZ","bad","456"]] => 2
+) */
 $arraydata = array(array('PQR','good','123'),array('PQR','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('ABC','good','123'),array('XYZ','bad','456'),array('ABC','good','123'),array('XYZ','bad','456'));
 $jsonecode  = json_encode($arraydata);
 $jsondecode  = json_decode($jsonecode);
@@ -93,4 +112,22 @@ if(!empty($jsondecode)){
 		}
 	}
 }
-echo "<pre>";print_r($myVararr);exit;
+echo "<pre>";print_r($myVararr);
+
+/* Input=> "abcdefgh" Output=> "badcfehg" */
+$mystr = "abcdefgh";
+$mystrlen = strlen($mystr);
+$myevenarr = $myoddarr = array();
+$myfinal = '';
+for($i=0;$i<$mystrlen;$i++){
+	if($i%2==0){
+		$myevenarr[] = $mystr[$i];
+	}else{
+		$myoddarr[] = $mystr[$i];
+	}
+}
+foreach($myevenarr as $key=>$value){
+	$myfinal.= $myoddarr[$key];
+	$myfinal.= $value;
+}
+echo "<pre>";print_r($myfinal);exit;
