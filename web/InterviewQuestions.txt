@@ -148,3 +148,32 @@
 	By default, the maximum upload file size for PHP scripts is set to 128 megabytes. However, you may want to change these limits. For example, you can set a lower limit to prevent users from uploading large files to your site. To do this, change the upload_max_filesize and post_max_size directives in your php.ini file.
 	If the size of post data is greater than post_max_size, the $_POST and $_FILES superglobals are empty. This can be tracked in various ways, e.g. by passing the $_GET variable to the script processing the data, i.e. <form action="edit.php?processed=1">, and then checking if $_GET['processed'] is set.
 	So unfortunately, it doesn't look like PHP sends an error. And since it sends am empty $_POST array, that is why your script is going back to the blank form - it doesn't think it is a POST
+26. Difference between margin and padding
+	Margin is on the outside of block elements while padding is on the inside.
+	Use margin to separate the block from things outside it
+	Use padding to move the contents away from the edges of the block.
+
+27. Difference between Zend and Symfony
+	Great dependency-injection container.
+	Configuration through annotations, php, or xml, or any combination.
+	Asset management through Assetic.
+	Incredibly powerful Form component.
+	Easy to use and powerful Event system.
+	Security features and and implementation of the voter design pattern.
+	Native integration with Doctrine 2.
+28. Importance about Interface
+	- Interface are definitions of the public APIs that classes (implementing an interface) must implement. It is also known as contracts as an interface allows to specify a list of methods that a class must implement. Interface definition is similar to the class definition, just by changing the keyword class to interface.
+	- Interfaces can contain methods and/or constants, but no attributes. Interface constants have the same restrictions as class constants. Interface methods are implicitly abstract.
+	- Any class that needs to implement an interface must do using the implements keyword. A single class can implement more than one interface at a time.
+	- A class cannot implement two interfaces that has the a same method name because it would end up with the method ambiguity.
+	Like classes, it is possible to establish an inheritance relationship between interfaces by using the same keyword “extends”.
+	Example:
+	interface Foo { 
+	  
+	} 
+	interface Bar { 
+	  
+	} 
+	interface Bass extends Foo, Bar { 
+	  
+	} 

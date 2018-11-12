@@ -130,4 +130,122 @@ foreach($myevenarr as $key=>$value){
 	$myfinal.= $myoddarr[$key];
 	$myfinal.= $value;
 }
-echo "<pre>";print_r($myfinal);exit;
+/* Sort the array in  asc order */
+$unsortedarr = array(8,2,10,56,3,5,32,75,21,9,7,3,98,76,23,12);
+$temp = '';
+for($j=0;$j<count($unsortedarr);$j++){
+	for($i=0;$i<count($unsortedarr)-1;$i++){
+		if($unsortedarr[$i] > $unsortedarr[$i+1]){
+			$temp = $unsortedarr[$i+1];
+			$unsortedarr[$i+1] = $unsortedarr[$i];
+			$unsortedarr[$i] = $temp;
+		}
+	}
+}
+echo "<pre>";print_r($unsortedarr);
+/*
+OUTPUT : 	*
+			**
+			***
+			****
+			*****
+			******
+			*******
+*/
+$number = 8;
+for($i=0;$i<$number;$i++){
+	for($j=0;$j<$i;$j++){
+		echo "*";
+	}
+	echo "</br>";
+}
+echo "<pre>";
+/*
+OUTPUT : 	********
+			*******
+			******
+			*****
+			****
+			***
+			**
+			*
+*/
+$number = 8;
+for($i=$number;$i>0;$i--){
+	for($j=0;$j<$i;$j++){
+		echo "*";
+	}
+	echo "</br>";
+}
+
+$variable = '';
+$variable1 = NULL;
+if(isset($variable)){
+	echo "ISSET BLANK";
+}
+if(isset($variable1)){
+	echo "ISSET NULL";
+}
+if(empty($variable)){
+	echo "EMPTY BLANK";
+}
+if(empty($variable1)){
+	echo "EMPTY NULL";
+}
+
+$x = 'vars';
+echo $$x; //print undefined variable vars
+echo "$$x"; // print $vars
+echo '$$x'; // print $$x
+echo "<pre>";
+/* Start Generate a radom string */
+function randomString($n){
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$randomnos = '';
+	for($i=0;$i<$n;$i++){
+		$index = rand(0,strlen($characters)-1);
+		//echo "$index<pre>";
+		$randomnos.=$characters[$index];
+	}
+	return $randomnos;
+}
+echo randomString(10);
+/* End Generate a radom string */
+echo "<pre>";
+class myTest{
+	public function foo(){
+		var_dump(__FUNCTION__);
+	}
+	public function bar(){
+		var_dump(__METHOD__);
+	}
+}
+$myobj = new myTest();
+$myobj->foo();
+$myobj->bar();
+echo "<pre>";
+/* Merge two arrays without changing their keys */
+	$array_1 = array(1=>"a",2=>"b",3=>"c",4=>"a",5=>"e");
+	$array_2 = array(6=>"d",7=>"f",8=>"g",9=>"h",10=>"a");
+	$merged_arr = $array_1 + $array_2;
+	var_dump($merged_arr);
+/* Merge two arrays without changing their keys */
+echo "<pre>";
+echo $_SERVER['HTTP_HOST'];
+echo "<pre>";
+echo $_SERVER['SERVER_NAME']; 
+
+echo "<pre>";
+/* Measuring script execution time in PHP */
+$start_time = microtime(true); 
+$a=1; 
+// Start loop 
+for($i = 1; $i <=1000; $i++) 
+{ 
+    $a++; 
+}  
+// End clock time in seconds 
+$end_time = microtime(true); 
+// Calculate script execution time 
+$execution_time = ($end_time - $start_time); 
+echo " Execution time of script = ".$execution_time." sec";   
