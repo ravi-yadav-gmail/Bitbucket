@@ -28,8 +28,45 @@
 	echo is slightly faster.
 
 6.	where vs having
+	A WHERE clause is used is filter records from a result.  The filter occurs before any groupings are made.
+	A HAVING clause is used to filter values from a group
+	When SQL statements have both a WHERE clause and HAVING clause, keep in mind the WHERE clause is applied first, then the results grouped, and finally the groups filtered according to the HAVING clause.
+	WHERE is used to filter records before any groupings take place.
+	HAVING is used to filter values after they have  been groups.  Only columns or expression in the group can be included in the HAVING clause’s conditions..
+
 7.	jsonp
+	JSONP, which stands for "JSON with Padding" (and JSON stands for JavaScript Object Notation), is a way to get data from another domain that bypasses CORS (Cross Origin Resource Sharing) rules.
+
+	CORS is a set of "rules," about transferring data between sites that have a different domain name from the client. For the purposes of this article, what you need to know is that in older browsers without CORS, and in newer browsers, without configuring things a specific way on both the sending and receiving sides, you can't make an AJAX request to a domain that is different from the one you're sending it from.
+
+	Enter JSONP. It pre-dates CORS, and was created as a pseudo-standard way to retreive data from a different domain. It has limitations to the modern full implementation of CORS as it can only really be used to retrieve data, and isn't really appropriate for a creating, updating or deleting data. It's only a retrieval method. While limiting, it definitely has its uses. For example, you can query the Yahoo Weather Service to get the current weather, and use JSONP and it will work on just about any browser with no extra configuration.
+
+	Ok, so what exactly is JSONP?
+	So in a typical request, you request data from the server and it might return some JSON so you can do something with it. On the server's side, JSONP is very similar, only it wraps that JSON in a function.
+
+	For example, if the JSON request was:
+
+	[{
+		"id": 1,
+		"name": "Cameron"
+	}]
+	a JSONP request might look like:
+
+	someCallback([{
+		"id": 1,
+		"name": "Cameron"
+	}]);
+	That someCallback function name is usually specified in the URL via a query parameter, most commonly callback. So if I add ?callback=cb to a request that supports JSONP, I'll get JSON wrapped in a function called cb().
+
+	On the Client Side
+	So nothing really different/all that special on the server side. At this point, you may be wondering, "how does wrapping some JSON in a function magically make it allowed to be accessed from another domain?" Well, it doesn't.
+
+	Where things get "magical" lies with the fact that a regular <script> tag does not have any limitations as to which domains it can pull down a script from. I could put a link to a JavaScript file on another domain in a <script> tag and it will download and immediately execute that script.
+
+	So if you wanted to implement some JSONP on the client, you'd put that URL in a script tag, and make sure you have a function that matches your callback function somewhere in your code, and that function will be called with the JSON from the request because it's being passed to the callback function that gets executed when the <script> tag executes.
+
 8.	how to get cookie from javascript
+	- document.cookie="name=" + cookievalue;
 9.	include vs require
 10.	difference between abstract & interface
 11.	what is trait in php
@@ -85,8 +122,9 @@
 	No Namespaces?
 	If we didn't have namespaces we'd have to (potentially) change a lot of code any time we added a library, or come up with tedious prefixes to make our function names unique. With namespaces, we can avoid the headache of naming collisions when mixing third-party code with our own projects.
 18.	can a inner join will work without ON alias
+	- YES
 19. Will session work if cookies are disabled
-
+	- YES, append the session into URL, or pass the session id into hidden from element.
 20.	How can we acheive overloading in php
 	<?php
 	class TDshape {
@@ -177,3 +215,12 @@
 	interface Bass extends Foo, Bar { 
 	  
 	} 
+29. What is new in HTML5 and CSS3
+	- Editing content within the elements  --  contenteditable=true
+	- Form attribute required -- required="required"
+	- Regular expressions -- pattern="[0-9]{5}"
+	- Figure tag in which we can include img, audio, video, chart, SVG, and canvas.
+	- The SVG element can be used to draw various shapes on a web page since these are vector based
+	- Webfonts -- With the help of @fontface rule, we can include any source file for fonts. At a later point, we can refer it through font-family declaration
+	- Gradient -- Gradient displays a combination of two or more colors.
+	- Animation and Transition -- We can use both Transition and Animation when it is required to change an element from one state to another

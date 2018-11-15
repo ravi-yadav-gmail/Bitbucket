@@ -249,3 +249,38 @@ $end_time = microtime(true);
 // Calculate script execution time 
 $execution_time = ($end_time - $start_time); 
 echo " Execution time of script = ".$execution_time." sec";   
+/* Measuring script execution time in PHP */
+echo "<pre>";
+$mystring = "raviyadav.2110@gmail.com";
+$outputstr = strstr($mystring,'V',10);
+$outputstri = stristr($mystring,'V',10);
+echo "1==>".$outputstr;
+echo "<pre>";
+echo "2==>".$outputstri;
+echo "<pre>";
+$date1 = date('Y-m-d');
+$date2 = '2017-11-15';
+$days = (strtotime($date1)-strtotime($date2))/(60*60*24);
+echo $days;
+?>
+<h2 contenteditable=true>You can edit me</h2>
+<input type="text" name="required Field"  required="required">
+<input type="text"  name="rollno"  pattern="[0-9]{5}" class="background">
+<figure>
+    <img src="http://static1.tothenew.com/blog/wp-content/uploads/2017/03/productimg.png">
+    <figcaption>
+    <p contenteditable=true>Image of birds</p>
+    </figcaption>
+</figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.47 53.44"> <path id="Shape_5_copy" data-name="Shape 5 copy" class="rewind-svg gray-icon" d="M2758.62,4719.2l28.92-23.09a1.538,1.538,0,0,1,.98-0.34,1.633,1.633,0,0,1,.71.16,1.672,1.672,0,0,1,.9,1.49v19.26l25.75-20.57a1.585,1.585,0,0,1,.99-0.34,1.56,1.56,0,0,1,.7.16,1.672,1.672,0,0,1,.9,1.49v46.16a1.672,1.672,0,0,1-.9,1.49,1.56,1.56,0,0,1-.7.16,1.585,1.585,0,0,1-.99-0.34l-25.75-20.57v19.26a1.672,1.672,0,0,1-.9,1.49,1.633,1.633,0,0,1-.71.16,1.538,1.538,0,0,1-.98-0.34l-28.92-23.09A1.673,1.673,0,0,1,2758.62,4719.2Z" transform="translate(-2756 -4693.78)"></path>
+ </svg>
+<style type="text/css">
+h2{
+-webkit-user-modify:read-write;
+}
+input:required{
+background:red;
+}
+background: -webkit-linear-gradient(to bottom,rgba(36,4,3,.8) 41%,rgba(0,0,0,0) 100%);
+background: linear-gradient(to bottom,rgba(36,4,3,.8) 41%,rgba(0,0,0,0) 100%);
+</script>
