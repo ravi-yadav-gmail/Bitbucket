@@ -1,3 +1,4 @@
+Interview Question and Answer
 1.	Session & Cookies
 2.	Design Pattern in PHP
 	- Factory
@@ -224,3 +225,40 @@
 	- Webfonts -- With the help of @fontface rule, we can include any source file for fonts. At a later point, we can refer it through font-family declaration
 	- Gradient -- Gradient displays a combination of two or more colors.
 	- Animation and Transition -- We can use both Transition and Animation when it is required to change an element from one state to another
+
+30.	How to increase file size in php without using php.ini file?
+	- These values both have the changeable-mode PHP_INI_PREDIR meaning they can be set using php.ini, .htaccess, httpd.conf or .user.ini but not ini_set(). This is because the post has already been received before the php script starts and ini_set() would have no effect anymore.
+
+31. What is HMVC?
+	- HMVC is a heira
+
+32. How we can avoid to not modify our data while make an restapi call?
+	- Make a GET call so that our data will not get modify.
+
+33. What is ORM ?
+	- A simple answer is that you wrap your tables or stored procedures in classes in your programming language, so that instead of writing SQL statements to interact with your database, you use methods and properties of objects.
+
+	In other words, instead of something like this:
+
+	String sql = "SELECT ... FROM persons WHERE id = 10"
+	DbCommand cmd = new DbCommand(connection, sql);
+	Result res = cmd.Execute();
+	String name = res[0]["FIRST_NAME"];
+	you do something like this:
+
+	Person p = repository.GetPerson(10);
+	String name = p.FirstName;
+	or similar code (lots of variations here.) Some frameworks also put a lot of the code in as static methods on the classes themselves, which means you could do something like this instead:
+
+	Person p = Person.Get(10);
+	Some also implement complex query systems, so you could do this:
+
+	Person p = Person.Get(Person.Properties.Id == 10);
+	The framework is what makes this code possible.
+
+	Now, benefits. First of all, you hide the SQL away from your logic code. This has the benefit of allowing you to more easily support more database engines. For instance, MS SQL Server and Oracle has different names on typical functions, and different ways to do calculations with dates, so a query to "get me all persons edited the last 24 hours" might entail different SQL syntax just for those two database engines. This difference can be put away from your logic code.
+
+	Additionally, you can focus on writing the logic, instead of getting all the SQL right. The code will typically be more readable as well, since it doesn't contain all the "plumbing" necessary to talk to the database.
+34. Which MySql version ur using?
+	- 10.0.35-MariaDB
+
